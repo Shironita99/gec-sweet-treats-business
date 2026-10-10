@@ -1,0 +1,87 @@
+Step 1 — Look at the CSV
+Open your life-expectancy.csv file and look at the first few lines.
+You should see something similar to:
+Entity,Code,Year,Life expectancy
+Afghanistan,AFG,1950,28.16
+Afghanistan,AFG,1951,28.57
+...
+
+Your first job is to figure out:
+- Which column contains the year?
+- Which column contains life expectancy?
+- What is the position/index of that column after you use .split(",")?
+For example, if a line becomes:
+["Afghanistan", "AFG", "1950", "28.16"]
+
+What index would contain "28.16"?
+Your answer should be 3, because Python starts counting at 0.
+Step 2 — Think about the file-reading process
+Before writing the whole program, think about this sequence:
+Open file
+     ↓
+Read each line
+     ↓
+Split the line by commas
+     ↓
+Get the life expectancy
+     ↓
+Compare it with the lowest/highest seen so far
+
+You already learned files and loops, so try to build this yourself.
+Step 3 — Your first small goal
+Don't worry about finding the minimum or maximum yet.
+Write a small program that:
+- opens the CSV file
+- loops through every line
+- splits each line
+- prints the pieces
+For example, conceptually:
+open the file
+for each line:
+    split the line
+    print the parts
+
+Run that and make sure it works.
+Step 4 — Then focus on the life expectancy
+Once you can see the individual parts, ask yourself:
+"How do I get the life expectancy from the list?"
+
+Remember that values read from a file are initially strings.
+So if the value is:
+"28.16"
+
+you need to think about what Python data type is appropriate for comparing decimal numbers.
+Question for you:
+Should "28.16" be converted to an int or a float?
+Step 5 — Finding the minimum and maximum
+This is the main milestone concept.
+Imagine you are looking through the data one row at a time.
+You need two variables:
+lowest = ?
+highest = ?
+
+At the beginning, you need an initial value.
+A useful strategy is:
+first actual life expectancy → use it as both lowest and highest
+
+Then for every following value, ask:
+Is this value smaller than my current lowest?
+    YES → replace lowest
+
+Is this value larger than my current highest?
+    YES → replace highest
+
+For example, imagine the data were:
+40.5
+52.3
+31.2
+67.8
+45.1
+
+Your thinking would be:
+Value	Lowest	Highest
+40.5	40.5	40.5
+52.3	40.5	52.3
+31.2	31.2	52.3
+67.8	31.2	67.8
+45.1	31.2	67.8
